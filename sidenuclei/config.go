@@ -198,24 +198,24 @@ type category struct {
 
 func (c *Config) detectCategories() []category {
 	return []category{
-		{c.CVE, []string{"cve"}},
-		{c.Exposures, []string{"exposure", "panel", "file"}},
-		{c.Misconfig, []string{"misconfig"}},
-		{c.Tech, []string{"tech"}},
-		{c.CVEInjection, []string{"sqli", "rce", "cmdi"}},
+		{c.CVE, []string{tagCVE}},
+		{c.Exposures, []string{tagExposure, tagPanel, tagFile}},
+		{c.Misconfig, []string{tagMisconfig}},
+		{c.Tech, []string{tagTech}},
+		{c.CVEInjection, []string{tagSQLi, tagRCE, tagCMDi}},
 	}
 }
 
 func (c *Config) fuzzCategories() []category {
 	return []category{
-		{c.SSRF, []string{"ssrf"}},
-		{c.Redirect, []string{"redirect"}},
-		{c.SQLi, []string{"sqli"}},
-		{c.XSS, []string{"xss"}},
-		{c.CMDi, []string{"cmdi"}},
-		{c.SSTI, []string{"ssti"}},
-		{c.XXE, []string{"xxe"}},
-		{c.CRLF, []string{"crlf"}},
+		{c.SSRF, []string{tagSSRF}},
+		{c.Redirect, []string{tagRedirect}},
+		{c.SQLi, []string{tagSQLi}},
+		{c.XSS, []string{tagXSS}},
+		{c.CMDi, []string{tagCMDi}},
+		{c.SSTI, []string{tagSSTI}},
+		{c.XXE, []string{tagXXE}},
+		{c.CRLF, []string{tagCRLF}},
 	}
 }
 
@@ -229,9 +229,9 @@ func (c *Config) fuzzEnabled() bool { return len(tagsOf(c.fuzzCategories())) > 0
 // that are enabled, for the startup safety warning.
 func (c *Config) enabledInjectionClasses() []string {
 	return onNames([]namedToggle{
-		{c.SQLi, "sqli"}, {c.XSS, "xss"}, {c.CMDi, "cmdi"},
-		{c.SSTI, "ssti"}, {c.XXE, "xxe"}, {c.CRLF, "crlf"},
-		{c.CVEInjection, "cve-injection"},
+		{c.SQLi, tagSQLi}, {c.XSS, tagXSS}, {c.CMDi, tagCMDi},
+		{c.SSTI, tagSSTI}, {c.XXE, tagXXE}, {c.CRLF, tagCRLF},
+		{c.CVEInjection, nameCVEInjection},
 	})
 }
 
@@ -239,8 +239,8 @@ func (c *Config) enabledInjectionClasses() []string {
 // for the status tool's coverage description.
 func (c *Config) enabledDetectionNames() []string {
 	return onNames([]namedToggle{
-		{c.CVE, "cve"}, {c.Exposures, "exposures"}, {c.Misconfig, "misconfig"},
-		{c.Tech, "tech"}, {c.CVEInjection, "cve-injection"},
+		{c.CVE, tagCVE}, {c.Exposures, nameExposures}, {c.Misconfig, tagMisconfig},
+		{c.Tech, tagTech}, {c.CVEInjection, nameCVEInjection},
 	})
 }
 
@@ -248,9 +248,9 @@ func (c *Config) enabledDetectionNames() []string {
 // status tool's coverage description.
 func (c *Config) enabledFuzzNames() []string {
 	return onNames([]namedToggle{
-		{c.SSRF, "ssrf"}, {c.Redirect, "redirect"}, {c.SQLi, "sqli"},
-		{c.XSS, "xss"}, {c.CMDi, "cmdi"}, {c.SSTI, "ssti"},
-		{c.XXE, "xxe"}, {c.CRLF, "crlf"},
+		{c.SSRF, tagSSRF}, {c.Redirect, tagRedirect}, {c.SQLi, tagSQLi},
+		{c.XSS, tagXSS}, {c.CMDi, tagCMDi}, {c.SSTI, tagSSTI},
+		{c.XXE, tagXXE}, {c.CRLF, tagCRLF},
 	})
 }
 

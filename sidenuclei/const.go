@@ -13,3 +13,26 @@ const (
 	targetField = "target"
 	errField    = "err"
 )
+
+// Nuclei template tags selected by coverage categories.
+const (
+	tagCVE       = "cve"
+	tagExposure  = "exposure"
+	tagPanel     = "panel"
+	tagFile      = "file"
+	tagMisconfig = "misconfig"
+	tagTech      = "tech"
+	tagSQLi      = "sqli"
+	tagRCE       = "rce"
+	tagCMDi      = "cmdi"
+	tagSSRF      = "ssrf"
+	tagRedirect  = "redirect"
+	tagXSS       = "xss"
+	tagSSTI      = "ssti"
+	tagXXE       = "xxe"
+	tagCRLF      = "crlf"
+
+	// Display names that differ from their tag value.
+	nameExposures    = "exposures"
+	nameCVEInjection = "cve-injection"
+)
